@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Link, useHistoryl, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 
 import "./styles.css";
