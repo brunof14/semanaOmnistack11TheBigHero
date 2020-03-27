@@ -68,7 +68,13 @@ export default function Profile() {
         </button>
       </header>
 
-      <h1>Casos cadastrados</h1>
+      {incidents.length === 0 ? (
+        <div className="withoutCaseMessage">
+          <h1>Não há casos casdastrados</h1>
+        </div>
+      ) : (
+        <h1>Casos cadastrados</h1>
+      )}
 
       <ul>
         {incidents.map(({ id, title, description, value }) => (

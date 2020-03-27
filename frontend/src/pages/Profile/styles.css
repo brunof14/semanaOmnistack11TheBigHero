@@ -44,6 +44,19 @@
   margin-bottom: 24px;
 }
 
+.profile-container .withoutCaseMessage {
+  min-height: 50vh;
+  display: flex;
+  margin-top: 80px;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-container .withoutCaseMessage h1 {
+  margin: 0;
+  color: #333030;
+}
+
 .profile-container ul {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
