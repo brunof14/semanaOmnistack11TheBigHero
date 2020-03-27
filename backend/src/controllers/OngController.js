@@ -9,6 +9,12 @@ module.exports = {
   },
   async create(req, res) {
     const { name, email, whatsapp, city, uf } = req.body;
+
+    //Verifica se todos os dados estão preenchidos
+    if (!(name && email && whatsapp && city && uf)) {
+      return res.status(400).json({ message: "Há campos em branco" });
+    }
+
     const id = crypto.randomBytes(4).toString("HEX");
 
     await connection("ongs").insert({
