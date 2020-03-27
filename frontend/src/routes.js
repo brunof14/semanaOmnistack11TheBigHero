@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Logon from "./pages/Logon";
 import Register from "./pages/Register";
+import GetId from "./pages/GetId";
 import Profile from "./pages/Profile";
 import NewIncident from "./pages/NewIncident";
 
@@ -14,6 +15,7 @@ export default function Routes() {
         <Route path="/register" component={Register} />
         <Route path="/profile" component={Profile} />
         <Route path="/incidents/new" component={NewIncident} />
+        <Route path="/getid/:id" children={<GetId />} />
       </Switch>
     </BrowserRouter>
   );

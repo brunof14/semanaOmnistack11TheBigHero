@@ -1,0 +1,77 @@
+.getid-container {
+  width: 100%;
+  max-width: 1200px;
+  height: 100vh;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.getid-container .content {
+  width: 100%;
+  padding: 96px;
+  background: #f0f0f5;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.getid-container .content section {
+  width: 100%;
+  max-width: 380px;
+}
+
+.getid-container .content section h1 {
+  margin: 64px 0 32px;
+  font-size: 32px;
+}
+
+.getid-container .content section p {
+  font-size: 18px;
+  color: #737380;
+  line-height: 32px;
+}
+
+.getid-container .content {
+  justify-content: center;
+}
+
+.getid-container section {
+  display: flex;
+  flex-direction: column;
+}
+
+.getid-container .content section img {
+  justify-self: center;
+}
+
+.getid-container .content section {
+  text-align: center;
+}
+
+.getid-container .content section p strong {
+  color: black;
+}
+
+.getid-container .content section .button {
+  color: white;
+  justify-content: center;
+}
+
+.getid-container .content section .button {
+  animation: perfumariaQueNaoVaiFicarBom 1.5s infinite;
+}
+
+@keyframes perfumariaQueNaoVaiFicarBom {
+  from {
+    box-shadow: 0 0 0 0px rgba(224, 32, 65);
+  }
+  to {
+    box-shadow: 0 0 0 10px rgba(224, 32, 65, 0);
+  }
+}
