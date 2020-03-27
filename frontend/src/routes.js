@@ -45,7 +45,6 @@ export default function Routes() {
         <PrivateRoute path="/register">
           <Register />
         </PrivateRoute>
-        {/* <Route path="/register" component={Register} /> */}
 
         <PrivateRoute path="/profile">
           <Profile />
@@ -53,8 +52,7 @@ export default function Routes() {
         <PrivateRoute path="/incidents/new">
           <NewIncident />
         </PrivateRoute>
-        {/* <Route path="/profile" component={Profile} />
-        <Route path="/incidents/new" component={NewIncident} /> */}
+
         <Route path="/getid/:id" children={<GetId />} />
       </Switch>
     </BrowserRouter>
