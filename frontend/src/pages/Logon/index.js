@@ -30,7 +30,7 @@ export default function Logon() {
     }
 
     redirectIfLogged(isLogged);
-  }, []);
+  }, [history]);
 
   async function handleLogin(e) {
     e.preventDefault();
