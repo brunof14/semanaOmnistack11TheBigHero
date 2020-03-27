@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import { FiLogIn } from "react-icons/fi";
 import { Link, useHistory } from "react-router-dom";
@@ -13,24 +13,6 @@ import logoImg from "../../assets/logo.svg";
 export default function Logon() {
   const [id, setID] = useState("");
   const history = useHistory();
-
-  useEffect(() => {
-    async function isLogged() {
-      const ongeId = await localStorage.getItem("ongId");
-      if (ongeId) {
-        return true;
-      }
-      return false;
-    }
-
-    async function redirectIfLogged(isLogged) {
-      if (await isLogged()) {
-        history.push("/profile");
-      }
-    }
-
-    redirectIfLogged(isLogged);
-  }, [history]);
 
   async function handleLogin(e) {
     e.preventDefault();
