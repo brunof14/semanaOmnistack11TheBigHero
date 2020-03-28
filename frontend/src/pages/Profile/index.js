@@ -38,6 +38,7 @@ export default function Profile() {
 
   async function handleDeleteIncident(id) {
     try {
+      setLoading(true);
       await api.delete(`incidents/${id}`, {
         headers: {
           Authorization: ongId
@@ -45,6 +46,7 @@ export default function Profile() {
       });
 
       setIncidents(incidents.filter(incident => incident.id !== id));
+      setLoading(false);
 
       alert("Deletado com sucesso");
     } catch (err) {

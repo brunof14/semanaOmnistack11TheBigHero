@@ -64,6 +64,26 @@
   list-style-type: none;
 }
 
+@media (max-width: 740px) {
+  .profile-container ul {
+    grid-template-columns: 1fr;
+  }
+  .profile-container header {
+    flex-direction: column;
+  }
+
+  .profile-container header span {
+    margin: 20px 0;
+  }
+
+  .profile-container header a {
+    margin: 10px 0;
+  }
+  .profile-container header button {
+    margin: 0;
+  }
+}
+
 .profile-container ul li {
   background: #fff;
   padding: 24px;
