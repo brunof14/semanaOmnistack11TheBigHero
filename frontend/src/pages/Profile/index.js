@@ -11,6 +11,7 @@ import "./styles.css";
 
 export default function Profile() {
   const [incidents, setIncidents] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const history = useHistory();
 
@@ -18,18 +19,21 @@ export default function Profile() {
   const ongName = localStorage.getItem("ongName");
 
   useEffect(() => {
-    api
-      .get("profile", {
+    async function loadDataProfile() {
+      setLoading(true);
+      const { data } = await api.get("profile", {
         headers: {
           Authorization: ongId
         },
         query: {
           page: 1
         }
-      })
-      .then(response => {
-        setIncidents(response.data);
       });
+      setLoading(false);
+      setIncidents(data);
+    }
+
+    loadDataProfile();
   }, [ongId]);
 
   async function handleDeleteIncident(id) {
@@ -55,52 +59,52 @@ export default function Profile() {
   }
 
   return (
-    <div className="profile-container">
-      <header>
-        <img src={logoImg} alt="Be The Hero" />
-        <span>Bem Vinda, {ongName}</span>
+    <Loading active={loading}>
+      <div className="profile-container">
+        <header>
+          <img src={logoImg} alt="Be The Hero" />
+          <span>Bem Vinda, {ongName}</span>
 
-        <Link className="button" to="/incidents/new">
-          Cadastrar novo caso
-        </Link>
+          <Link className="button" to="/incidents/new">
+            Cadastrar novo caso
+          </Link>
 
-        <button type="button" onClick={handleLogout}>
-          <FiPower size={18} color="E02041" />
-        </button>
-      </header>
+          <button type="button" onClick={handleLogout}>
+            <FiPower size={18} color="E02041" />
+          </button>
+        </header>
 
-      <Loading />
+        {incidents.length === 0 ? (
+          <div className="withoutCaseMessage">
+            <h1>Não há casos casdastrados</h1>
+          </div>
+        ) : (
+          <h1>Casos cadastrados</h1>
+        )}
 
-      {incidents.length === 0 ? (
-        <div className="withoutCaseMessage">
-          <h1>Não há casos casdastrados</h1>
-        </div>
-      ) : (
-        <h1>Casos cadastrados</h1>
-      )}
+        <ul>
+          {incidents.map(({ id, title, description, value }) => (
+            <li key={id}>
+              <strong>CASO:</strong>
+              <p>{title}</p>
 
-      <ul>
-        {incidents.map(({ id, title, description, value }) => (
-          <li key={id}>
-            <strong>CASO:</strong>
-            <p>{title}</p>
+              <strong>DESCRIÇÃO:</strong>
+              <p>{description}</p>
 
-            <strong>DESCRIÇÃO:</strong>
-            <p>{description}</p>
-
-            <strong>VALOR:</strong>
-            <p>
-              {Intl.NumberFormat("pt-BR", {
-                style: "currency",
-                currency: "BRL"
-              }).format(value)}
-            </p>
-            <button type="button" onClick={() => handleDeleteIncident(id)}>
-              <FiTrash2 size={20} color="A8A8B3" />
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
+              <strong>VALOR:</strong>
+              <p>
+                {Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL"
+                }).format(value)}
+              </p>
+              <button type="button" onClick={() => handleDeleteIncident(id)}>
+                <FiTrash2 size={20} color="A8A8B3" />
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Loading>
   );
 }
