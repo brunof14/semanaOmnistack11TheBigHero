@@ -5,6 +5,7 @@ import { FiPower, FiTrash2 } from "react-icons/fi";
 
 import api from "../../services/api";
 
+import Loading from "../../components/Loading";
 import logoImg from "../../assets/logo.svg";
 import "./styles.css";
 
@@ -67,6 +68,8 @@ export default function Profile() {
           <FiPower size={18} color="E02041" />
         </button>
       </header>
+
+      <Loading />
 
       {incidents.length === 0 ? (
         <div className="withoutCaseMessage">
